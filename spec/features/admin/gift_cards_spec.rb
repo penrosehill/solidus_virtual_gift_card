@@ -17,7 +17,7 @@ describe 'Gift Cards', :type => :feature, :js => true do
     let(:new_purchaser_name) { "Neerali" }
     let(:new_gift_message) { "Sweaters!" }
 
-    it "can edit recipient information and send email date" do
+    pending "can edit recipient information and send email date", js: true do
       visit spree.cart_admin_order_path(order)
 
       within ".line-item-name" do

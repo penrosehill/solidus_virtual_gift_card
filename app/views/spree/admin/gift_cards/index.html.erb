@@ -4,7 +4,7 @@
 
 <%= render partial: 'lookup_form' %>
 
-<%= paginate @gift_cards %>
+<%= paginate @gift_cards, theme: 'solidus_admin' %>
 
 <% if @gift_cards.any? %>
   <table class="index">
@@ -24,8 +24,10 @@
     <tbody>
       <% @gift_cards.each do |gift_card| %>
         <tr>
-          <td class="align-center"><%= gift_card.formatted_redemption_code %></td>
-          <td class="align-center"><%= number_to_currency(gift_card.amount) %></td>
+          <td class="align-center">
+            <%= link_to gift_card.formatted_redemption_code,edit_admin_order_gift_card_path(gift_card.order, gift_card) %>
+          </td>
+          <td class="align-center"><%= link_to number_to_currency(gift_card.amount), edit_admin_order_path(gift_card.order) %></td>
           <td class="align-center"><%= link_to "#{gift_card.purchaser.email}", edit_admin_user_path(gift_card.purchaser) %></td>
           <td class="align-center"><%= gift_card.formatted_created_at %></td>
           <td class="align-center"><%= gift_card.recipient_email %></td>
@@ -43,4 +45,4 @@
   </table>
 <% end %>
 
-<%= paginate @gift_cards %>
+<%= paginate @gift_cards, theme: 'solidus_admin' %>
