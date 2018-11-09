@@ -114,6 +114,7 @@ class Spree::VirtualGiftCard < Spree::Base
   def send_email
     Spree::GiftCardMailer.gift_card_email(self).deliver_later
     update_attributes!(sent_at: DateTime.now)
+    line_item.inventory_units.find_each { |iu| iu.shipment.ship unless iu.shipped? }
   end
 
   private
