@@ -10,7 +10,7 @@ module Spree::RedemptionCodeGenerator
 
   private
 
-  def omitted_chars
+  def self.omitted_chars
     %w[O L I B 0 1 8]
   end
 end
